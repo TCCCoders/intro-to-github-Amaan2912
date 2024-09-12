@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+class Money {
+   public:
+      void SetCents(int moneyCents);      
+      int GetCents() const;                        
+      void PrintInDollars();
+   private:
+      int cents;
+      int ConvertToDollars();                
+};
+
+void Money::SetCents(int moneyCents) {
+   cents = moneyCents;
+}
+
+int Money::GetCents() const {
+   return cents;
+}
+
+int ConvertToDollars(int cents) {
+   int dollars;
+   dollars = cents / 100;
+   return dollars;
+}
+
+void Money::PrintInDollars() {
+   cout << fixed << setprecision(1) << ConvertToDollars() << " dollars" << endl;
+}
+
+int main() {
+   Money money1;
+   int inputCents;
+
+   cin >> inputCents;
+   money1.SetCents(inputCents);
+
+   money1.PrintInDollars();
+
+   return 0;
+}
